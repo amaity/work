@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dvc_mapping import busMark, branchMark
 from psse_utils import run_psse
-from plot_utils import get_buscoords, get_busdetails
+from plot_utils import get_buscoords, get_busdetails, get_buoffsets
 
 businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
 
@@ -16,7 +16,8 @@ def bus_trace(bdat):
             dot, busname = get_busdetails(businfo,bus)
             x, y = get_buscoords(bus)
             ax.plot(x, y, color=dot, marker='o')
-            plt.text(x+2, y, busname, fontsize=8)
+            dx, dy, ang = get_buoffsets(bus)
+            plt.text(x+1+dx, y+1+dy, busname, fontsize=8, rotation=ang)
 
 #generation markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -77,9 +78,9 @@ def get_intermediate_points(key):
 def get_poffsets(key):
     rkey = tuple(reversed(key)) # reverse key
     if key in branchMark and 'poffset' in branchMark[key]:
-            dxt, dyt = branchMark[key]['poffset'] # data location offsets
+        dxt, dyt = branchMark[key]['poffset'] # data location offsets
     elif rkey in branchMark and 'poffset' in branchMark[rkey]:
-            dxt, dyt = branchMark[rkey]['poffset']
+        dxt, dyt = branchMark[rkey]['poffset']
     else:
         dxt, dyt = 0, 0
     return dxt, dyt
@@ -89,10 +90,10 @@ def place_lines(key,mode,colr):
     xar, yar = get_intermediate_points(key)
     #import pdb; pdb.set_trace()
     if mode == 'brn':
-        plt.plot(xar,yar,colr,zorder=1)
+        plt.plot(xar,yar,color=colr,zorder=1)
     elif mode == 'trn':
         mxar, myar = (xar[0]+xar[1])/2., (yar[0]+yar[1])/2.
-        plt.plot([xar[0],mxar],[yar[0],myar],colr,zorder=1)
+        plt.plot([xar[0],mxar],[yar[0],myar],color=colr,zorder=1)
 
 def place_arrows_pfdata(key,wid,fnt,colr,pdat):
     xtr, ytr = get_intermediate_points(key)

@@ -21,8 +21,8 @@ businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
 # Powerflow plot sized for A3 paper (420x297)mm ~ (16.5x11.7)in ~ (1188x842)pt
 # Slide default size is 10"x7.5" (254x190)mm ~ (1024x768)pixels @ 96dpi
 # Viewport/slide coordinates : (720x540)pt (w x h)
-shp_width = Mm(2.8)
-shp_height = Mm(2.8)
+shp_width = Mm(3.5)
+shp_height = Mm(3.5)
 txt_width = Pt(1)
 txt_height = Pt(1)
 
@@ -51,6 +51,19 @@ def pptx_bus_trace(bdat):
 			font = run.font
 			font.name = 'Calibri'
 			font.size = Pt(8)
+
+def pptx_brn_trace():
+    for brn in brnflow:
+        if brn[0] in busMark and brn[1] in busMark:
+            key = (brn[0],brn[1])
+            rkey = tuple(reversed(key))
+            colr, busname = get_busdetails(businfo,brn[0])
+            place_lines(key,'brn',colr)
+            if brn[4]>0: # check powerflow direction
+                args = (key,0.5,6,colr,brn[2])
+            else:
+                args = (rkey,0.5,6,colr,brn[2])
+            place_arrows_pfdata(*args)
 
         
 if __name__ == '__main__':

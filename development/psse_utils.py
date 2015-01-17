@@ -364,6 +364,7 @@ def run_psse():
     a = list(reduce(tuple.__add__,[x[:2] for x in branchinfo])) 
     b = [x[0] for x in mybuslst]
     mybusdat = list(set(a+b))
+    #mybusdat = [i for i in businfo for j in mybus if i[0]==j]
     tiebusdat = list(set(a)-set(b))
     #print mybusdat
     rbus=[]; rgenbus=[]

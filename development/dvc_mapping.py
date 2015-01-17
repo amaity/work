@@ -65,8 +65,8 @@ busMark = {
      44110 : {'buloc':(kx,ky-n*3)}, #barhi 
      44111 : {'buloc':(kx+m*7,ky-n*4)}, #maithon
      44112 : {'buloc':(kx+m*8,ky-n*5)}, #panchet
-     44113 : {'buloc':(kx,ky-n*2)}, #koderma(new)
-     44114 : {'buloc':(kx-m,ky-n*3)}, #hazaribagh
+     44113 : {'buloc':(kx,ky-n*2),'buoffset':(-22,0,0)}, #koderma(new)
+     44114 : {'buloc':(kx-m,ky-n*3),'buoffset':(-9,0,0)}, #hazaribagh
      44115 : {'buloc':(kx+m,ky-n*8)}, #gola
      44116 : {'buloc':(kx+m,ky-n*14)}, #chandil
      44117 : {'buloc':(kx+m*6,ky-n*6)}, #putki
