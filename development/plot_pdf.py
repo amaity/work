@@ -1,91 +1,15 @@
-import math
-import numpy as np
 import matplotlib.pyplot as plt
 from dvc_mapping import busMark, branchMark
 from psse_utils import run_psse
-from plot_utils import get_buscoords, get_busdetails, get_buoffsets
+from plot_utils import get_buscoords, get_busdetails, get_buoffsets, \
+                    rect, polar, get_buoffsets, calc_segs, get_intermediate_points,\
+                    get_poffsets
 
 businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
 
-#bus markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fig, ax = plt.subplots()
 
-def bus_trace(bdat):
-    for bus in bdat:
-        if bus in busMark:
-            dot, busname = get_busdetails(businfo,bus)
-            x, y = get_buscoords(bus)
-            ax.plot(x, y, color=dot, marker='o')
-            dx, dy, ang = get_buoffsets(bus)
-            plt.text(x+1+dx, y+1+dy, busname, fontsize=8, rotation=ang)
-
-#generation markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-for bus in rgenbus:
-    if bus[0] in busMark:
-        x, y = get_buscoords(bus[0])
-        plt.annotate(int(bus[1]), xy=(x, y),
-                    xytext=(x, y+4),
-                    bbox=dict(boxstyle="round", fc="0.8"),
-                    arrowprops=dict(arrowstyle="->"), fontsize=6)
-
-#load markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-for bus in myloadinfo:
-    if bus[0] in busMark:
-        x, y = get_buscoords(bus[0])
-        plt.text(x+2, y-2.5, 'L', fontsize=6)
-        plt.text(x+4, y-2.5, int(abs(bus[1])), fontsize=6)
-
-#helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# radian if deg=0; degree if deg=1
-def rect(r, w, deg=0):
-    from math import cos, sin, pi
-    if deg:
-        w = pi*w/180.0
-    return r*cos(w), r*sin(w)
-
-# radian if deg=0; degree if deg=1
-def polar(x, y, deg=0):
-    from math import hypot, atan2, pi
-    if deg:
-        return hypot(x, y), 180.0*atan2(y, x)/pi
-    else:
-        return hypot(x, y), atan2(y, x)
-
-def calc_segs(x,y,dec=0):
-    theta1 = np.arctan2(y[1]-y[0],x[1]-x[0])
-    theta2 = np.arctan2(y[0]-y[1],x[0]-x[1])
-    dist = math.hypot(x[1]-x[0],y[1]-y[0])
-    dx1, dy1 = rect((dist/2.)-dec,theta1,deg=0)
-    dx2, dy2 = rect((dist/2.)-dec,theta2,deg=0)
-    return dx1, dy1, dx2, dy2
-
-
-def get_intermediate_points(key):
-    rkey = tuple(reversed(key)) # reverse key
-    if key in branchMark and 'interpts' in branchMark[key]:
-        arg = key
-    elif rkey in branchMark and 'interpts' in branchMark[rkey]:
-        arg = rkey
-    else:
-        arg = None
-    x,y=(get_buscoords(key) if arg == None else get_buscoords(arg) )
-    xt, yt = ( ((),()) if arg == None else zip(*branchMark[arg]['interpts']))
-    xar, yar = (x[0],)+xt+(x[1],), (y[0],)+yt+(y[1],)
-    return xar, yar
-
-def get_poffsets(key):
-    rkey = tuple(reversed(key)) # reverse key
-    if key in branchMark and 'poffset' in branchMark[key]:
-        dxt, dyt = branchMark[key]['poffset'] # data location offsets
-    elif rkey in branchMark and 'poffset' in branchMark[rkey]:
-        dxt, dyt = branchMark[rkey]['poffset']
-    else:
-        dxt, dyt = 0, 0
-    return dxt, dyt
-
-    
+# helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def place_lines(key,mode,colr):
     xar, yar = get_intermediate_points(key)
     #import pdb; pdb.set_trace()
@@ -108,6 +32,36 @@ def place_circles(key,rad,colr,fill=False):
     circ = plt.Circle((x[0]+dx1,y[0]+dy1), rad, color=colr, fill=False)
     ax.add_artist(circ)
 
+#bus markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def bus_trace(bdat):
+    for bus in bdat:
+        if bus in busMark:
+            dot, busname = get_busdetails(businfo,bus)
+            x, y = get_buscoords(bus)
+            ax.plot(x, y, color=dot, marker='o')
+            dx, dy, ang = get_buoffsets(bus)
+            plt.text(x+1+dx, y+1+dy, busname, fontsize=8, rotation=ang)
+
+#generation markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def gen_trace(gdat):
+    for bus in gdat:
+        if bus[0] in busMark:
+            x, y = get_buscoords(bus[0])
+            plt.annotate(int(bus[1]), xy=(x, y),
+                        xytext=(x, y+4),
+                        bbox=dict(boxstyle="round", fc="0.8"),
+                        arrowprops=dict(arrowstyle="->"), fontsize=6)
+
+#load markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def load_trace(ldat):
+    for bus in ldat:
+        if bus[0] in busMark:
+            x, y = get_buscoords(bus[0])
+            plt.text(x+2, y-2.5, 'L', fontsize=6)
+            plt.text(x+4, y-2.5, int(abs(bus[1])), fontsize=6)
 
 #line markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -149,6 +103,8 @@ if __name__ == '__main__':
     brn_trace(brnflow)  
     trn_trace(trfflow)
     bus_trace(mybusdat)
+    gen_trace(rgenbus)
+    load_trace(myloadinfo)
 
     ax.set_xlim(0,410)
     ax.set_ylim(0,287)

@@ -1,12 +1,14 @@
 from dvc_mapping import busMark, branchMark
-from plot_utils import get_buscoords, get_busdetails, reformat
+from plot_utils import get_buscoords, get_busdetails, get_buoffsets, \
+                       rect, polar, get_buoffsets, calc_segs, \
+                       get_intermediate_points, get_poffsets
+from psse_utils import run_psse
+businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
+
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.util import Mm, Pt, Inches
 from pptx.dml.color import RGBColor
-
-from psse_utils import run_psse
-businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
 
 # Create an empty presentation with no slides
 
@@ -21,8 +23,8 @@ businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
 # Powerflow plot sized for A3 paper (420x297)mm ~ (16.5x11.7)in ~ (1188x842)pt
 # Slide default size is 10"x7.5" (254x190)mm ~ (1024x768)pixels @ 96dpi
 # Viewport/slide coordinates : (720x540)pt (w x h)
-shp_width = Mm(3.5)
-shp_height = Mm(3.5)
+shp_width = Mm(3.2)
+shp_height = Mm(3.2)
 txt_width = Pt(1)
 txt_height = Pt(1)
 
