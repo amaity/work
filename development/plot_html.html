@@ -3,19 +3,48 @@
 	<head>
   		<meta charset="UTF-8">
   		<title>Network plot</title>
-  		<script src="d3.v3.min.js"></script>
+  		<script src="d3.min.js"></script>
   		<script src="lodash.min.js"></script>
+  		<style type="text/css">
+  		#svgel {
+  			position: absolute;
+  			top: 50%;
+  			left: 50%;
+  			transform: translate(-50%,-50%);
+  		}
+  		</style>
  	</head>
  	<body>
- 	<h1>DVC Network</h1>
+ 		<h1>DVC Network</h1>
+ 		<div id="svgel"></div>
 		<script type="text/javascript">
-		d3.json("data.json", function(){})
+		
+    	var width = 960;
+    	var height = 500;
+
+    	var svg = d3.select("div").append("svg")
+    	.attr("width", width)
+    	.attr("height", height)
+
+		d3.json("data.json", function(data){
+			var k = _(data.nodelocations).map("buloc").value();
+			// console.log(JSON.stringify(k));
+			svg.selectAll("circle")
+			.data(k)
+			.enter()
+			.append("circle")
+			.attr("cx", function(d){return d[0]*width/420;})
+			.attr("cy", function(d){return height - d[1]*height/297;})
+			.attr("r", 5);
+		});
+		/*
 		var search = _.filter(_.keys(data), function (key) {
     var obj = data[key];
     return _.every(query, function (val, queryKey) {
         return ref(obj, queryKey) === val;
     });
 });
+*/
 		</script>
  	</body>
 </html>
