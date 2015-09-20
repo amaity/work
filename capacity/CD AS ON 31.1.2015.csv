@@ -1,0 +1,433 @@
+CD AS ON 31.01.2015,,,,,
+sl,Name of the,Name of the Consumer,Existing CD ,Total LOAD, No. of  
+no,Substation,,(MVA),(MVA), pts. 
+A . GOMD - I,,,,213.240,15
+1,HOWRAH,132/33; 165MVA(3x55),,15.000,1
+,,WBSEDCL ( AMBUJA CEMENT) 132KV,15.000,,
+,,,,,
+2,BELMURI,"132/33: 1x31.5MVA,1x 25 MVA; 132/25: 50 MVA (2x25)",,43.000,2
+,,WBSEB,25.000,,
+,,WBSEB(E.Rly),18.000,,wef 01.11.08
+,,,,,
+3,BURDWAN,"132/33;150MVA(3X50),132/25;50MVA(2X25)",,123.700,9
+,,WBSEB,48.000,,
+,,E.Rly(Burdwan),22.000,,
+,,Howrah Gases Ltd.,6.400,,
+,,Shyam Sel Ltd.,2.800,,"wef. 3.09.08,10.05.09"
+,,Shyam Ferro Alloys Ltd.,16.000,,wef 20.12.08
+,,BRGD Ingots,8.600,,"wef. 15.09, 24.12.08, 09.11.09,5.2"
+,,N.N.Ispat Pvt. Ltd.,13.200,,"disc-9.9, recn-12.11.08"
+,,Global Castings Pvt. Ltd.,3.500,,
+,,Mansarovar Ferrous Pvt. Ltd.,3.200,,
+,,,,,
+4,KHARAGPUR,132/33; 1x7.5MVA,,17.040,1
+,," WBSEB, Kharagpur     (132KV) ",17.040,,
+,,,,,
+5,KOLAGHAT,,,14.500,2
+,,Shri Badrinarain Alloys & Steels Ltd.                          (132 KV),10.000,,
+,,Skipper Limited,4.500,,
+B. GOMD - II,,,,704.960,57
+6,KALIPAHARI,132/33KV:210 MVA(2X80+1X50) 1X31.5 MVA in Reserve,,141.000,7
+,,"DPSCLtd., Seebpore",38.000,,,
+,,"DPSCLtd., Luchipur",37.500,,,
+,,"DPSC Ltd., J K Nagar",20.000,,,
+,,"WBSEB, Luchipur",12.000,,,
+,,"WBSEB, Kanyapur",29.000,,,
+,,"ECL, Satgram",3.500,,wef 01.08.10,
+,,Sarvamangalam Gajanan Steel Pvt. Ltd.,1.000,,,
+,,,,,,
+7,KALYANESWARI,132/33KV:81.5MVA(1X50+1X31.5) 220/132KV:450MVA(3X150),,140.800,16,
+,,Maithon Alloys Ltd.       (132KV),40.000,,wef 01.10.14,
+,,Impex Ferro Tech. Ltd.  (132KV),23.000,,,
+,,Nikita Metals Pvt.Ltd.,8.400,,recn-14.08.08,
+,,City Alloys Pvt Ltd,3.000,,,
+,,BMA Stainless Limited,12.000,,,
+,,Hira Concast Ltd.,11.000,,wef. 16.03.10,
+,,Impex Steel Ltd.,14.000,,wef.10.12.09,
+,,Maa Lori Ispat Pvt. Ltd.,3.000,,"disc-18.09.08, recn 08/06/09",
+,,Chhabra Ispat Pvt. Ltd.,7.500,,"wef.13.12,08,22.01,29.08.09",
+,,Maithon Steel & Power Ltd.,2.800,,"wef 01.02, 07.02.10",
+,,Maithon Power Ltd.,0.600,,,
+,,Maa Sherawali Ispat Pvt.Ltd.,6.000,,w.e.f.06.01.11,
+,,Ujjal Minerals & Steel Pvt. Ltd.,2.000,,w.e.f.13.04.11,
+,,Jagdamba Ispat Pvt. Ltd.,3.000,,,
+,,Asansol Alloys Pvt. Ltd.,3.600,,,
+,,Employee Township of Maithon Power Ltd.,0.900,,,
+8,MAITHON L/Bank,132/33; 100MVA(2x50),,51.475,8,-1
+,,"CLW, Chittaranjan",11.000,,,
+,,"SAIL, Kulti",8.250,,"wef.16/08,15/09/08,4/2,28/07,01/11,07/12/09 ",
+,,"WBSEB, Kalyaneswari",1.000,,,
+,,Mihijam Vanaspati Ltd.,0.725,,,
+,,"HCL, Rupnarayanpur",1.500,,,
+,,"WBSEB, Dendua",10.000,,,
+,,Anjaney Ferro Alloys Ltd.,16.500,,"wef.1.08,16.12.08,08.06.09"
+,,Dhanbad Water Supply Project,2.500,,
+,,,,,
+9, MAITHON R/Bank ,132/33; 22.5MVA(2x10+2.5),,9.000,1
+,," JSEB, Badjna ",9.000,,
+,,,,,
+10, KUMARDHUBI ," 132/33KV:100MVA(2X50),132/25KV:41MVA (1X25+1X16) ",,89.585,11
+,," E. Rly, Kumardhubi ",20.500,,wef.1/11/08
+,,"DPSC Ltd., Dishergarh",32.000,,
+,," JSEB, Kumardhubi ",6.500,,
+,," BCCL, Chanch-Victoria ",5.000,,
+,," JSEB, Mugma ",17.000,,
+,,,,,
+,, Natraj Iron & Castings Ltd. ,1.335,,"wef.14/12/08, 10.12.09"
+,," JSEB,Sanjay Chawk ",3.000,,wef.13.05.09
+,, Maithon Ceramic Ltd. ,1.900,,"wef.12/1,01.05.09,01/07/10"
+,,G.N.Coke Mfg.Pvt. Ltd.,0.450,,
+,,Sharad International Ltd.,1.500,,
+,,Valley Refractories Ltd (Baba Hi-Tech),0.400,,wef. 16.03.10
+,,,,,
+11, PANCHET HYDEL ,132/33KV:35MVA(1X20+1X15),,17.600,5
+,," DCSL, Madhukunda ",6.000,,
+,, Mark Steels Ltd. ,3.500,,
+,, Rabindra Enterprises Pvt. Ltd. ,0.500,,
+,, AIC Iron Industries Pvt. Ltd. ,6.100,,
+,, Vision Sponge Iron Pvt.Ltd. ,1.500,,"wef.1/8/08,1/12/10"
+,,,,,
+12, RAMKANALI , 132/25KV :37.5MVA(1X25+1X12.5) ,,32.500,2
+,," S.E. Rly, Adra ",14.500,,wef.01.05.09
+,, Ispat Damodar Ltd.      (132 KV) ,18.000,,"wef.1/2/09,01/11/10"
+,,,,,
+13, Burnpur ,220/33; 100MVA (2x50),,150.000,2
+,,"IISCO, Burnpur  (220 KV)",120.00,,wef 01.10.14,
+,,"IISCO, Burnpur",30.00,,wef 01.03.11,
+,,,,,,
+14, Jamuria ,220/33; 100MVA (2x50),,73.000,5,
+,,Gagan Commodoties Pvt. Ltd.,22.000,,"wef 01.02,10.05",
+,,Super Smelters Ltd.,25.000,,,
+,,Shyam Sel & Power Ltd.,15.000,,,
+,,Satyam Smelters Pvt Ltd. ,10.000,,,
+,,Bhagwati Sponge Pvt. Ltd.,1.000,,,
+C. GOMD - III,,,,182.150,8,
+15,CHANDIL,,,0.000,0,
+,,,,,,
+16,JAMSHEDPUR,"132/33: 2x50MVA, 220/132: 2X150MVA",,140.000,2,
+,,JUSCO,20,,wef 19.02.11,
+,,TISCO                         (132 KV),120.000,,wef.01.08.08,
+,,,,,,
+17,MOSABANI,132/33; 51.5 MVA(1x31.5 + 1x20),,24.400,2
+,,"JSEB, Mosabani",16.000,,
+,,JSEB(S.E. Rly)( 132 KV),8.400,,
+,,,,,
+18,PURULIA,132/33KV: 50MVA(5X10),,17.750,4
+,,Bharat Hi-Tech (Cements) Ltd.,3.500,,wef. 11.06.14
+,,Har Gouri Steels Pvt. Ltd.,3.000,,
+,,Purulia Metal Casting Pvt. Ltd.,8.250,,
+,,J & C Ferro Alloy,3.000,,
+D. GOMD - IV,,,,963.350,86
+19, PATHERDIH ,"132/33KV: 210MVA(2X80+1X50), 1× 50 MVA in Reserve; 132/25KV:50 MVA(2X25)",,172.050,19
+,," WBSEB, Santaldih ",0.800,,
+,," BCCL, Putki-Balihari     (132KV) ",25.000,,
+,," BCCL, North Amlabad ",3.600,,
+,," IISCO, Jitpur ",4.000,,
+,," TSL, Jamadoba ",7.000,,
+,," BCCL, Sudamdih ",11.000,,
+,," JSEB, Digwadih ",11.000,,
+,," BCCL, Jealgora ",22.000,,
+,, ACC ,7.300,,
+,," JSEB, Gobindpur ",19.000,,
+,," JSEB, Mukunda ",4.000,,
+,," BCCL, Bastacolla ",12.500,,
+,," JSEB, Chasnalla ",8.000,,
+,," S.E. Rly, Patherdih ",15.000,,wef 1/6/10
+,," BCCL, Koylanagar ",5.100,,
+,, Electrosteel Castings Ltd. ,5.000,,
+,,Parth Ispat  Pvt. Ltd.,0.750,,
+,," JSEB, PMCH PSS ",10.000,,
+,, Electrosteel Steels Ltd.(Water Pump House) ,1.000,,1.4.14
+20, SINDRI ,,,28.250,3
+,, PDIL                         (132KV) ,0.250,,
+,," JSEB, FCI                 (132KV) ",10.000,,
+,," E.C. Rly, Pradhankanta ",18.000,,wef. 15/09/08
+,,,,,
+21, PUTKI , 132/33KV:210MVA(2X80+1X50) ,,134.700,14
+,," JSEB, Katras ",10.000,,
+,," JSEB, Katras(Sijua) ",2.500,,
+,," BCCL, Katras Project ",9.200,,15.2.14
+,," TSL, Bhelatand ",12.000,,wef.10.12.09
+,," JSEB, Ganeshpur ",12.000,,
+,," JSEB, Jamadoba ",13.000,,
+,," JSEB, Godhore ",14.000,,
+,, HMFL. Bhuli ,4.000,,
+,," BCCL, South Loyabad ",11.000,,
+,," BCCL, Moonidih ",12.500,,
+,,BCCL Bhalgora,13.500,,
+,,JSEB Sendra-Bansjora,4.000,,
+,,BCCL Ramkanali,16.500,,,
+,,"Mohuda Raiway Settlement & Pumping Station,SER (33 KV)",0.500,,,
+,,,,,,
+22,NIMIAGHAT,"132/33; 30MVA(1x20+1x10), 132/25; 50MVA(2x25)",,46.500,3,
+,,"E. C. Rly, Nimiaghat",19.000,,wef.14/10/08,
+,,"JSEB,Dumri Banaso",25.000,,,
+,,"ECR,Gomoh Complex",2.500,,"wef.1/10/08,15.12.09",
+,,,,,,
+23,GIRIDIH,132/33KV: 210 MVA(2X80+1X50),,143.850,27,-2
+,,"JSEB, Giridih",45.000,,,
+,,"CCL, Giridih",4.500,,,
+,,Allied India Pvt. Ltd.,1.000,,,
+,,"Lall Steels Pvt. Ltd,",3.200,,wef 05.04.10,
+,,Mongia Hi-Tech(P) Ltd.,7.500,,wef. 28.04.09,
+,,Atibir Hi-Tech(P) Ltd.,9.500,,"wef. 18.06.09, 01.03.10",
+,,Shivam Iron & Steel Co. (P) Ltd,15.000,,,
+,,Zoya Steels Pvt. Ltd.,0.500,,,
+,,Balmukund Sponge & Iron Ltd.,17.000,,,
+,,Satyam Ferro Tech Pvt Ltd.,8.000,,,
+,,Atibir Industries Company Limited,1.350,,,
+,,Sundaram  ferro Tech Pvt. Ltd,0.500,,01.01.15,
+,,Saluja Steel & Power(P) Ltd,0.500,,,
+,,ADI  ISPAT PVT. LTD,3.000,,,
+,,RUBY MICA,0.500,,,
+,,PRS METALIKS,0.500,,,
+,,BIR Steels Pvt. Ltd.,2.000,,,
+,,Santpuria Alloys Private Limited,0.500,,,
+,,Atibir Industries Co. Ltd. (Concast & Rolling Division),16.000,,"wef. 18.06.09, 01.03.10",
+,,Lal Ferro Alloys Company P. Ltd.,0.500,,,
+,,Swati Sponge & Iron Pvt. Ltd. ,1.500,,,
+,,Harshit Power & Ispat Pvt. Ltd.,0.500,,,
+,,Carbon Resources Pvt Ltd.,0.300,,,
+,,Gaurishankar Electro-Castings (P) Ltd.,0.500,,,
+,,"Saluja Steel & Power Pvt. Ltd, (UNIT#2)",3.000,,,
+,,ADI Wires (P) Ltd.,0.500,,,
+,,ShreeVenkateshwara Electrocast Private Limited,1.000,,01.10.14,
+24,CTPS, ,,336.900,10,
+,,"BCCL, Madhuband",30.000,,,
+,,"JSEB, Dugda",15.000,,,
+,,"JSEB, Chas /(Multifeeder from BIADA)",30.000,,,
+,,"JSEB, Jainamore",13.000,,,
+,,"E. C. Rly,Rajabera",18.000,,wef.5/10/08,
+,,"BSL, Marafari at         (132 KV)",200.000,,"wef 01.07.09, 16.10.09",
+,,"BCCL, Dugda",6.000,,,
+,,The Eastern Oxygen & Acetylene Pvt. Ltd.,0.400,,,
+,,Bokaro Jaypee Cement Ltd. (132 KV),23.000,,,
+,,BRL (Bhandardah),1.500,,,
+25,BIADA,,,32.100,7,
+,,MDA Projects,2.000,,,,,,
+,,Shreewali Ferro,3.100,,,,,,
+,,Shree Bholay Alloy Pvt.Ltd.,9.000,,"03.02.11,",,,,
+,,Hanuman Alloys Pvt.Ltd.,6.500,,11.02.11,,,,
+,,"JSEB, Chas",0.000,,,*Increased from combined 23 MVA to 30 MVA(from CTPS + Biada),,,
+,,Bharat Re-Rolling Mills Ltd.,0.500,,,by ED (System) himself vide his letter dated 17.07.2014,,,
+,,Uday Vijay Steel Pvt. Ltd.,5.000,,,,,,(from 15.7.2014 08-00hrs)
+,,Castron Technologies Ltd.,6.000,,New supply from BIADA 10.10.14,,,,
+26,Dhanbad,220/33KV:160MVA(2X80) 220/132KV:300MVA(2X150),,69.000,3,,,,
+,,Electrosteel Steel Ltd. (220 KV),65.000,,,,,,
+,,Lai Prabhuji Iron & Steel(P) Ltd.,3.000,,,,,,
+,,Mittal Polypacks Pvt. Ltd.,1.000,,,,,,
+E. GOMD - V,,,,515.450,50,,,,
+27,"BTPS'A""",132/33: 100MVA (2x50),,54.000,5,,,,
+,,"JSEB, Bokaro",14.000,,,,,,
+,,"CCL, Kathara",5.000,,,,,,
+,,"CCL, Kargali",24.000,,wef.1/2/09,
+,,"CCL, Karo Special",5.000,,wef. 01.10.14,
+,,"ECR, Gomia-TSS",6.000,,,
+28,BARHI,132/33: 60MVA(1x50+1x10),,20.000,2,
+,,"JSEB,Padma",5.000,,,
+,,"JSEB, Barhi",15.000,,,
+,,,,,,
+29,HAZARIBAGH,132/33: 100MVA (2x50),,45.000,2,
+,,"JSEB, Hazaribagh",30.000,,,
+,,"JSEB, Hazaribagh (RGGVY)",15.000,,cop: 14.7.14,
+30,KONAR,132/33KV; 1x20MVA,,25.000,3,
+,,"JSEB,Banaso",6.000,,,
+,,"JSEB,Karma",5.000,,,
+,,"ECR, Hazaribagh Road",14.000,,,
+,,,,,,
+31,GOLA,132/33KV; 51.5MVA(1X31.5+1X20),,31.600,4,-2
+,,"CCL, Rajrappa",1.600,,,
+,,"JSEB, HUPPU",5.000,,,
+,,Yash Alloys Pvt. Ltd.,6.000,,wef. 01.08.09,
+,,"South Eastern Railway,Muri ",19.000,,,
+32,KODARMA,132/33KV:100MVA(2X50) - 1× 20 MVA & 1× 10 MVA in reserve: 132/25;50MVA(2x25),,85.200,8,
+,,"JSEB, Kodarma",30.000,,,
+,,"E.C. Rly, Kodarma",24.500,,wef.15/09/08,
+,,Super Steel Castings Ltd.,2.700,,,
+,,Balaji Electrosteels Ltd.,10.000,,01.10.14,
+,,Tulshyan Metals Pvt. Ltd.,0.500,,,
+,,Jai Durga Iron Pvt. Ltd,2.000,,,
+,,Super Smelters  Limited,15.000,,,
+,,Mayur Rice Mills Pvt. Ltd.,0.500,,,
+33,RAMGARH,"132/33KV:180MVA(1X80+2X50), 220/33KV: 100MVA(2X50), 220/132KV:300MVA(2X150)",,161.650,22,
+,,JSEB,35.000,,,
+,,"JSEB, Kuju",12.000,,,
+,,"JSEB, West Bokaro",0.300,,
+,,"TISCO, West Bokaro",8.000,,
+,,"BFCL, Marar",4.500,,
+,,"CCL, Giddi",16.000,,
+,,"CCL,Kedla",14.500,,
+,,Aloke Steel Industries Pvt. Ltd.,1.500,,wef.15/2/09
+,,"CCL,Sirka",6.000,,
+,,"BRL,Ranchi Road",0.600,,wef.17/9/08
+,,"BRL, IFICO Plant",1.500,,
+,,E. Rly for Barkakhana TSS,18.500,,
+,,Dayal Steel Limited,9.600,,wef. 04.04.09
+,,Gautam Ferro Alloys ,5.100,,
+,,Sumi Vyapaar Pvt. Ltd.,0.500,,
+,,Balashri Metals Pvt.Ltd.,2.550,,wef. 26.05.09
+,,Jharkhand Ispat Private Limited,8.000,,disc-21/8 recn-4/9/08
+,,Calcutta Carbide Pvt. Ltd.,3.000,,wef. 22.05.09
+,,War Steel Pvt. Ltd.,1.500,,
+,,"Garrison Engineer, Ramgarh, Cantonment",2.200,,"wef. 01.06.09,1/7/10, 1/8/14"
+,,Maihar Alloys Private Limited,2.800,,
+,,CCL Kuju,8.000,,1.3.14
+34,PATRATU,132/33KV:31.5MVA(1X31.5),,48.000,2
+,,UMI Special Steel Ltd.,0.000,,
+,,"CCL, Urimari",8.000,,"wef. 22.09.09,1.6.10"
+,,Jindal Steel & Power Ltd 132 KV,40.000,,"wef.13/9/08, 23/01/10"
+,,,,,
+35,North Karanpura,132/33KV:100MVA(2X50),,45.000,2
+,,"CCL, North karanpura",27.000,,wef.1/1/09
+,,E. C. Rly for RAY TSS,18.000,,wef.15/9/08
+,,,,,
+F. GOMD - VI,,,,741.445,75
+36,DTPS,"132/33KV: 150MVA(3X50), 132/25: 50MVA(2x25)",,42.200,3
+,,Durgapur Cement Ltd,11.200,,
+,,E.Rly(Durgapur),25.000,,"wef.22.12.08,01.05.05",
+,,Durga Hi-Tech Cement,6.000,,,
+,,,,,,
+37,PARULIA,220/33KV:85MVA(1X50+1X35),,182.300,16,
+,,Tamla (SAIL)            AT 220 KV,100.000,,wef. 01.10.14,
+,,Alaknanda Sponge Iron Pvt. Ltd,2.500,,wef. 19.05.09,
+,,Vaishanavi Ispat Pvt. Ltd.,9.500,,"wef.1/1,1/2/09",
+,,H. R. Ispat Pvt. Ltd.,6.000,,"wef. 01.04.09,1.6.10",
+,,Sharp Ferro Alloys Ltd.,19.500,,wef. 10.08.09,
+,,Alishan Steels Pvt. Ltd.,3.500,,disc-21/01,
+,,Debeanjana Hard coke Pvt. Ltd.,3.500,,,
+,,East India Holdings Pvt. Ltd.,10.000,,1.4.14,
+,,R.S.Casting Pvt.Ltd.,3.300,,,
+,,K.B.Sponge Iron Ltd.,3.300,,,
+,,Sumangal Ispat Pvt. Ltd.,3.500,,,
+,,Sova Electrocasting Pvt. Ltd.,5.000,,,
+,,Sreevardhana Metaliks Pvt. Ltd.,3.200,,wef.15/2/09,
+,,Salasar Ispat  Ltd.,3.000,,,
+,,Super Iron Foundry Pvt. Ltd.,1.500,,,
+,,Ma Chandi Durga Cement Pvt. Ltd.,5.000,,,
+38,MTPS,220/33KV:80MVA(1X80),,63.700,9,-2
+,,"WBSEB, Barjora",10.000,,,
+,,SRC Metallic Pvt. Ltd.,4.500,,,
+,,Shree Sanyeeji Steel & Power Ltd.,10.000,,,
+,,GPT Castings Ltd.,2.700,,,
+,,Lafarge India Pvt. Ltd.,7.500,,wef.07/01/09,
+,,"Lafarge India Pvt. Ltd., U # II",2.000,,,
+,,SRC Udyog Ltd.,1.000,,,
+,,Nilkanth Ferro Pvt. Ltd.,18.000,,,
+,,Capricon Ispat Udyog Pvt. Ltd.,8.000,,,
+39,"ASP, Durgapur",132/33KV:100MVA(2X50),,57.300,6,
+,,Srinivsaa Ferro Alloys Ltd.,12.600,,,
+,,Bhaskar Schrachi Alloys Ltd.,16.000,,
+,,Karthik Alloys Ltd.,10.750,,
+,,Shivam India Ltd.,15.000,,
+,,CP Sponge Iron Pvt. Ltd.,0.950,,
+,,"NIT, Durgapur",2.000,,
+40,DURGAPUR,220/33KV;210MVA(1X50+2X80),,196.500,20
+,,Ultra tech Cement Limited,7.000,,
+,,Dinman Polypacks Pvt.Ltd.,0.750,,"wef 01.04,01.08"
+,,VSP Udyog Pvt. Ltd.,11.000,,
+,,Venky Hi-Tech Ispat Ltd,9.000,,"wef 01.10.09, 22.04.10"
+,,Brahm (Alloys) Pvt Ltd,10.000,,"wef.1/10/08,06.06.09"
+,,Sree Waris Piya Steel Co.P Ltd.,3.000,,
+,,Shri Ramrupai Balaji Steels Ltd,26.000,,
+,,Shyam Steel Ind. Ltd. ( formerly Shree Gopal Hi-Tech Pvt Ltd.),9.500,,
+,,Neo Metaliks Limited,2.300,,wef 27.12.2008
+,,Ramsarup Nirmann Wires,1.000,,"wef.12/10/08 24.06, 24.08.09"
+,,Graphite India Ltd.,48.000,,"wef.10/01,9/3/09,01/02/10",
+,,Jai Balaji (Temporaray),22.000,,,
+,,Mackeil Ispat & Forging Ltd.,2.500,,,
+,,Jai Balaji Sponge Limited,10.000,,,
+,,Sova Power Ltd.,0.500,,wef 04.11.2010,
+,,Jai Venkatesh ,11.000,,,
+,,Ruhr Ispat Pvt. Ltd.,1.250,,,
+,,Shivam Meltek Pvt. Ltd.,13.700,,,
+,,Jaishree Steels Pvt Ltd,5.000,,,
+,,Saran Alloys Pvt. Ltd.,3.000,,wef 01.12.2012,
+41,BARJORA,"220/33 ;200MVA(2x50 + 100MVA) ,     220/ 132; 300MVA    (2X150)",,199.445,21,
+,,Surya Alloy Industries Ltd.,12.000,,"wef. 05.04.09,07.02.10,01.06.11",
+,,BDG & Sons Pvt. Ltd.,35.500,,"wef. 01.05.09, 19.01,12.05",
+,,Tulip Fabrics Alloys Ltd.,0.320,,"wef. 02.06.09,10.05.10",
+,,Expandable Enterprises(P) Ltd.,3.150,,,
+,,Steelex Electrocast (P) Ltd,6.300,,,
+,,Cosmic Ferro Alloys Pvt. Ltd,27.500,,"wef.20/12/08, 15/2/09"
+,,G & A Metals,7.000,,wef.01.08.08
+,,Times Ferro Alloy Ltd.,4.800,,wef.8/2/09
+,,Rattan Ispat Pvt. Ltd.,4.000,,
+,,Lalwani Ferro Alloys Ltd.,19.125,,"wef.1/1,22/2,1/5,15.12.09,01.02.10,1/1/11"
+,,Shriram Rathi Steels Pvt. Ltd.,2.200,,"wef 26.04,16.09.09"
+,,Kharkia Steel Pvt. Ltd.,12.700,,wef 01.02.10
+,,Surya Alloy Industries Ltd. U#2,3.400,,"wef 28.03,1.6.10"
+,,SBIW Steels Pvt. Ltd.,2.200,,wef 6/7/10
+,,Jai Ambey Metals Pvt. Ltd.,3.500,,
+,,Arjan Dass & Sons Pvt. Ltd.,3.100,,wef 1.6.10
+,,Sonic Thermal Ltd.  (132 KV),18.000,,"w.e.f.10.01.11,01.02.11"
+,,H.P.Ispat (P) Ltd. ,6.850,,"wef.11/01/09,1/1/11"
+,,Xpro India Limited,1.800,,
+,,SHREE AMBEY ISPAT PVT. LTD.(132 KV),8.000,,wef 01.05.14
+,,Dimension Steel & Alloys Pvt. Ltd.,18.000,,wef 27/09/2011
+CD AS ON 31.01.2015,,,3320.595,3320.595,291,
+,,,,,,
+,,"No. of Consumers,  Voltage & Connected Load",,,,
+,,,,,,
+,,Connected  Load in Jharkhand (Command Area) (In MVA)         ,,,,
+,,Inside Valley,,No. Of Consumers /off-take points.,,
+,,At 220 KV Level,65.00,1,,
+,,At 132 KV Level,482.75,16,,
+,,At 33 KV Level,964.86,130,,
+,,TOTAL,1512.61,147,46.25,
+,,Outside Valley,,,,
+,,At 220 KV Level,0.00,,,
+,,At 132 KV Level,128.40,2,,
+,,At 33 KV Level,36.00,2,,
+,,TOTAL,164.40,4,,
+,,GRAND TOTAL,1677.01,151,,
+
+,JSERC DATA,,,
+,,JSEB,,
+,,33 KV,437.30,33
+,,132 KV,18.40,2
+,,220 KV,0,
+,,TOTAL,455.7,35
+,,JUSCO (33 KV),20,1
+,,BSL (132 KV),200.000,1
+,,TATA STEEL (132 KV),120,1
+,,,,
+,,INDIAN RAILWAYS (132 KV),184.500,10
+,OTHER INDUSTRIAL CONSUMERS,,,
+,,33 KV,543.56,98
+,,132 KV,88.25,4
+,,220 KV,65,1
+,,TOTAL,696.81,103
+,LT & COMML. CONSUMERS,,,
+,GRAND TOTAL,,1677.01,151
+,,,,
+,WBERC DATA,,,
+,,WBSEDCL,,
+,,33 KV,135.8,8
+,,132 KV,50.04,3
+,,220 KV,0.0,0
+,,TOTAL,185.84,11
+,,,,
+,,DPSC LTD.,127.500,4
+,,,,
+,,INDIAN RAILWAYS,,
+,,132 KV,61.5,3
+,OTHER INDUSTRIAL CONSUMERS,,,
+,,33 KV,767.345,106
+,,132 KV,117,6
+,,220 KV,220,2
+,,TOTAL,1104.35,114
+,LT & COMML. CONSUMERS,,,0
+,GRAND TOTAL,,1479.2,132
+,,,,
+,,,,
+,DVC as a whole ,,,
+,,33 KV,2031.505,250
+,,132 KV,839.69,30
+,,220 KV,285,3
+,,TOTAL,3156.195,283
+
+,Industrial,JH<1 MVA,114,17
+,,JH>1 MVA & above,3.7,2
+
+,,WB<1 MVA,41.12,8
+,,WB>1 MVA & above,22.025,4

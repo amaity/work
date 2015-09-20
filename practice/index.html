@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple tables in D3</title>
+    <meta charset="utf-8">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+   <script src="lodash.min.js"></script>
+    <script src="https://rawgit.com/gka/d3-jetpack/master/d3-jetpack.js"></script>
+ 
+    <style type="text/css">
+    body { font-family: 'Helvetica Neue', Helvetica; font-weight: 300; padding: 20px;}
+    th { text-align: left; }
+    th, td { padding: 0 1em 0.5ex 0;}
+    th.center, td.center { text-align: center; }
+    th.num, td.num { text-align: right; }
+    </style>
+</head>
+<body>
+<h1>Test</h1>
+    <script>
+    
+    d3.csv("modcd.csv", function(data){
+        var gpdivs = d3.nest()
+                        .key(ƒ("Division"))
+                        .rollup(ƒ("length"))
+                        .entries(data);
+        //console.log(JSON.stringify(gpdivs));
+        //console.log(gpdivs);
+        var keys = [];
+        for (var item in gpdivs) {
+            keys.push(gpdivs[item].key);
+        };
+        //console.log(keys);
+        
+    var table = d3.select('body').append('table');
+
+    var columns = [
+    { head: 'Division', cl: 'title',
+      html: function(row) { return row.Division; } },
+    { head: 'Substation', cl: 'title',
+      html: function(row) { return row.Substation; } },
+    { head: 'Consumer', cl: 'title',
+      html: function(row) { return row.Consumer; } },
+    { head: 'Cd', cl: 'num',
+      html: function(row) { return row.Cd; } }
+    ];
+
+    table.append('thead').append('tr')
+    .selectAll('th')
+    .data(columns).enter()
+    .append('th')
+    .attr('class', ƒ('cl'))
+    .text(ƒ('head'));
+
+    table.append('tbody')
+    .selectAll('tr')
+    .data(data).enter()
+    .append('tr')
+    .selectAll('td')
+    .data(function(row, i) {
+       // evaluate column objects against the current row
+        return columns.map(function(c) {
+            var cell = {};
+            d3.keys(c).forEach(function(k) {
+                cell[k] = typeof c[k] == 'function' ? c[k](row,i) : c[k];
+            });
+            return cell;
+        });
+    }).enter()
+    .append('td')
+    .html(ƒ('html'))
+    .attr('class', ƒ('cl'));
+
+    });
+/*
+d3.csv("modcd.csv", function(data){
+    var goms = d3.nest()
+                    .key(ƒ("Division"))
+                    .rollup(function(v){return v.length;})
+                    .map(data);
+    //console.log(Object.keys(goms));
+    var ncon = [];
+    for (var key in goms) {
+        ncon.push(goms[key])
+    };
+    //console.log(ncon)
+});
+
+
+d3.csv("modcd.csv", function(data){
+    var gpsubs = d3.nest()
+                    .key(ƒ("Division"))
+                    .key(ƒ("Substation"))
+                    .rollup(function(v){return v.length;})
+                    .map(data);
+    console.log(Object.keys(gpsubs))
+    values = [];
+    for (var key in gpsubs) {
+        values.push(gpsubs[key])
+    };
+    console.log(values)
+    var consub = values.map(function(elem){
+        var item = [];
+        for (var prop in elem) {
+            item.push(elem[prop]);
+        }
+        return item.length;//d3.sum(item);
+    });
+    console.log(consub);
+    var snames = values.map(function(elem){
+        var item = [];
+        for (var prop in elem) {
+            item.push(prop);
+        }
+        return _.fill(item.concat(Array(d3.max(consub)-item.length))," ",item.length);//d3.sum(item);
+    })
+    snames = _.unzip(snames);
+    for (var i = 0; i < snames.length; i++) {
+        console.log(snames[i])
+    };   
+});
+*/
+
+d3.csv("modcd.csv", function(data){
+    var cdtots = d3.nest()
+                    .key(ƒ("Division"))
+                    .key(ƒ("Substation"))
+                    .rollup(function(v) { 
+                        return {
+                            totalCd: Math.round(d3.sum(v, function(d) { return d.Cd; })),
+                            totalCon: v.length
+                        };
+                    })
+                    .map(data);
+    console.log(cdtots);
+    
+    arr = _.values(_.mapValues(cdtots, _.partial(_.map, _, _.values)));
+    _.forEach(arr,function(d){
+        console.log(JSON.stringify(d));
+    });
+
+});
+
+    </script>
+
+</body>

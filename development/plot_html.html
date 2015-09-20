@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="UTF-8">
+  		<title>Network plot</title>
+  		<script src="d3.v3.min.js"></script>
+  		<script src="lodash.min.js"></script>
+ 	</head>
+ 	<body>
+ 	<h1>DVC Network</h1>
+		<script type="text/javascript">
+		d3.json("data.json", function(){})
+		var search = _.filter(_.keys(data), function (key) {
+    var obj = data[key];
+    return _.every(query, function (val, queryKey) {
+        return ref(obj, queryKey) === val;
+    });
+});
+		</script>
+ 	</body>
+</html>

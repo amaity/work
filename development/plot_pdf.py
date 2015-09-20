@@ -1,13 +1,10 @@
 import matplotlib.pyplot as plt
-from dvc_mapping import busMark, branchMark
 from psse_utils import run_psse
+from dvc_mapping import busMark, branchMark
 from plot_utils import get_buscoords, get_busdetails, get_buoffsets, \
                     rect, polar, get_buoffsets, calc_segs, get_intermediate_points,\
-                    get_poffsets
+                    get_poffsets, check_bus, get_ldoffsets
 
-businfo, mybusdat, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
-
-fig, ax = plt.subplots()
 
 # helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def place_lines(key,mode,colr):
@@ -18,12 +15,14 @@ def place_lines(key,mode,colr):
     elif mode == 'trn':
         mxar, myar = (xar[0]+xar[1])/2., (yar[0]+yar[1])/2.
         plt.plot([xar[0],mxar],[yar[0],myar],color=colr,zorder=1)
+    elif mode == 'oln':
+        plt.plot(xar,yar,color=colr,linestyle='--')
 
 def place_arrows_pfdata(key,wid,fnt,colr,pdat):
     xtr, ytr = get_intermediate_points(key)
     dxt, dyt = get_poffsets(key)
     dxtr, dytr = calc_segs(xtr,ytr)[:2]
-    ax.arrow(xtr[0],ytr[0],dxtr,dytr,width=wid,color=colr)
+    ax.arrow(xtr[0],ytr[0],dxtr,dytr,head_width=wid,color=colr)
     plt.text(xtr[0]+dxt+dxtr+1, ytr[0]+dyt+dytr+1, int(pdat), fontsize=fnt)
 
 def place_circles(key,rad,colr,fill=False):
@@ -32,11 +31,11 @@ def place_circles(key,rad,colr,fill=False):
     circ = plt.Circle((x[0]+dx1,y[0]+dy1), rad, color=colr, fill=False)
     ax.add_artist(circ)
 
-#bus markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#bus markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def bus_trace(bdat):
     for bus in bdat:
-        if bus in busMark:
+        if check_bus('bus',bus):
             dot, busname = get_busdetails(businfo,bus)
             x, y = get_buscoords(bus)
             ax.plot(x, y, color=dot, marker='o')
@@ -47,10 +46,10 @@ def bus_trace(bdat):
 
 def gen_trace(gdat):
     for bus in gdat:
-        if bus[0] in busMark:
+        if check_bus('gen',bus):
             x, y = get_buscoords(bus[0])
             plt.annotate(int(bus[1]), xy=(x, y),
-                        xytext=(x, y+4),
+                        xytext=(x+2, y+5),
                         bbox=dict(boxstyle="round", fc="0.8"),
                         arrowprops=dict(arrowstyle="->"), fontsize=6)
 
@@ -58,31 +57,36 @@ def gen_trace(gdat):
 
 def load_trace(ldat):
     for bus in ldat:
-        if bus[0] in busMark:
+        if check_bus('load',bus):
             x, y = get_buscoords(bus[0])
-            plt.text(x+2, y-2.5, 'L', fontsize=6)
-            plt.text(x+4, y-2.5, int(abs(bus[1])), fontsize=6)
+            dx, dy, ang = get_ldoffsets(bus[0])
+            plt.text(x+dx+2, y+dy-2.5, 'L', fontsize=6,rotation=ang)
+            plt.text(x+dx+4, y+dy-2.5, int(abs(bus[1])), fontsize=6,rotation=ang)
 
 #line markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def outl_trace(linedict,brnflow):
+    for key in linedict:
+        if not [tup for tup in brnflow if sorted(key) == sorted(tup[:2])]:
+            place_lines(key,'oln','k')
 
 def brn_trace(brnflow):
     for brn in brnflow:
-        if brn[0] in busMark and brn[1] in busMark:
+        if check_bus('brn',brn):
             key = (brn[0],brn[1])
             rkey = tuple(reversed(key))
             colr, busname = get_busdetails(businfo,brn[0])
             place_lines(key,'brn',colr)
             if brn[4]>0: # check powerflow direction
-                args = (key,0.5,6,colr,brn[2])
+                args = (key,1.5,6,colr,brn[2])
             else:
-                args = (rkey,0.5,6,colr,brn[2])
+                args = (rkey,1.5,6,colr,brn[2])
             place_arrows_pfdata(*args)
 
 #transformer markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def trn_trace(trnflow):
     for trn in trnflow:
-        if trn[0] in busMark and trn[1] in busMark:
+        if check_bus('trn',trn):
             key = (trn[0],trn[1])
             colr1, busname1 = get_busdetails(businfo,trn[0])
             rkey = tuple(reversed(key))
@@ -92,14 +96,17 @@ def trn_trace(trnflow):
             place_circles(key,2,colr1)
             place_circles(rkey,2,colr2)
             if trn[4] > 0:
-                args = (key,0.5,6,colr1,trn[2] )
+                args = (key,1.5,6,colr1,trn[2] )
             else:
-                args = (rkey,0.5,6,colr2,trn[2] )
+                args = (rkey,1.5,6,colr2,trn[2] )
             place_arrows_pfdata(*args)
 
 #plot details ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if __name__ == '__main__':
+    businfo, mybusdat, rbusinfo, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
+    fig, ax = plt.subplots()
+    outl_trace(branchMark,brnflow)
     brn_trace(brnflow)  
     trn_trace(trfflow)
     bus_trace(mybusdat)
@@ -113,11 +120,12 @@ if __name__ == '__main__':
     #ax.set_title('load flow plot')
     plt.text(300, 270, 'Damodar Valley Corporation', fontsize=12)
     plt.text(300, 265, 'Gen in MW,', fontsize=10)
-    plt.text(327, 265, 'Brnchflow in MVA,', fontsize=10)
+    plt.text(327, 265, 'Branchflow in MVA,', fontsize=10)
     plt.text(368, 265, 'Load in MVA', fontsize=10)
-    plt.text(300, 260, '--400KV', color='red', fontsize=10)
-    plt.text(320, 260, '--220KV', color='blue', fontsize=10)
-    plt.text(340, 260, '--132KV', color='green', fontsize=10)
+    plt.text(300, 260, '-400KV', color='red', fontsize=10)
+    plt.text(320, 260, '-220KV', color='blue', fontsize=10)
+    plt.text(340, 260, '-132KV', color='green', fontsize=10)
+    plt.text(360, 260, '- -OUT', color='black', fontsize=10)
     plt.show()
 
     fig.set_size_inches(16.5,11.7)

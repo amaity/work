@@ -2,7 +2,7 @@ from dvc_mapping import busMark, branchMark
 import math
 import numpy as np
 
-#helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # radian if deg=0; degree if deg=1
 def rect(r, w, deg=0):
     from math import cos, sin, pi
@@ -18,6 +18,17 @@ def polar(x, y, deg=0):
     else:
         return hypot(x, y), atan2(y, x)
 
+def check_bus(elem,var):
+	if elem == 'bus':
+		if var in busMark:
+			return True
+	elif elem == 'load' or elem == 'gen':
+		if var[0] in busMark:
+			return True
+	elif elem == 'brn' or elem == 'trn':
+		if var[0] in busMark and var[1] in busMark:
+			return True
+
 
 def get_buscoords(bus):
 	if isinstance(bus, (int, long)):
@@ -30,6 +41,9 @@ def reformat (color):
 	return int (round (color[0] * 255)), \
 			int (round (color[1] * 255)), \
 			int (round (color[2] * 255))
+
+def RGB(r,g,b):
+	return r + g*256 + b*256**2
 
 def get_busdetails(businfo,bus):
 	mybus = [tup for tup in businfo if tup[0] == bus]
@@ -48,6 +62,12 @@ def get_buoffsets(bus):
 		tup0, tup1, tup2 = 0,0,0
 	return tup0, tup1, tup2
 
+def get_ldoffsets(bus):
+	if 'ldoffset' in busMark[bus]:
+		tup0, tup1, tup2 = busMark[bus]['ldoffset'] 
+	else:
+		tup0, tup1, tup2 = 0,0,0
+	return tup0, tup1, tup2
 
 def calc_segs(x,y,dec=0):
     theta1 = np.arctan2(y[1]-y[0],x[1]-x[0])
