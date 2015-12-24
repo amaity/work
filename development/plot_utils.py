@@ -46,14 +46,15 @@ def RGB(r,g,b):
 	return r + g*256 + b*256**2
 
 def get_busdetails(businfo,bus):
+        coltup = (0,0,0)
 	mybus = [tup for tup in businfo if tup[0] == bus]
 	if mybus[0][1] == 132.0:
-		arg = (0,0.5,0) 
+		coltup = (0,0.5,0) 
 	elif mybus[0][1] == 220.0:
-		arg = (0,0,1) 
+		coltup = (0,0,1) 
 	elif mybus[0][1] == 400.0:
-		arg = (1,0,0) 
-	return arg, mybus[0][2]
+		coltup = (1,0,0) 
+	return coltup, mybus[0][2]
 
 def get_buoffsets(bus):
 	if 'buoffset' in busMark[bus]:

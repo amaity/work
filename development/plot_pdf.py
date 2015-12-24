@@ -1,10 +1,10 @@
-import matplotlib.pyplot as plt
 from psse_utils import run_psse
 from dvc_mapping import busMark, branchMark
 from plot_utils import get_buscoords, get_busdetails, get_buoffsets, \
                     rect, polar, get_buoffsets, calc_segs, get_intermediate_points,\
                     get_poffsets, check_bus, get_ldoffsets
-
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
 
 # helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def place_lines(key,mode,colr):
@@ -33,14 +33,17 @@ def place_circles(key,rad,colr,fill=False):
 
 #bus markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def bus_trace(bdat):
+def bus_trace(businfo,bdat,tiebusdat):
     for bus in bdat:
         if check_bus('bus',bus):
-            dot, busname = get_busdetails(businfo,bus)
+            colr, busname = get_busdetails(businfo,bus)
             x, y = get_buscoords(bus)
-            ax.plot(x, y, color=dot, marker='o')
+            ax.plot(x, y, color=colr, marker='o')
             dx, dy, ang = get_buoffsets(bus)
-            plt.text(x+1+dx, y+1+dy, busname, fontsize=8, rotation=ang)
+            plt.text(x+1+dx, y+1+dy, busname, fontsize=6, rotation=ang)
+            if bus in tiebusdat:
+                circ = plt.Circle((x,y), 2, color='black', fill=False)
+                ax.add_artist(circ)
 
 #generation markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,15 +64,17 @@ def load_trace(ldat):
             x, y = get_buscoords(bus[0])
             dx, dy, ang = get_ldoffsets(bus[0])
             plt.text(x+dx+2, y+dy-2.5, 'L', fontsize=6,rotation=ang)
-            plt.text(x+dx+4, y+dy-2.5, int(abs(bus[1])), fontsize=6,rotation=ang)
+            plt.text(x+dx+4, y+dy-2.5, int(abs(bus[1])), fontsize=6,
+                     rotation=ang)
 
 #line markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-def outl_trace(linedict,brnflow):
+def outl_trace(linedict,brnflow,mybusdat):
     for key in linedict:
-        if not [tup for tup in brnflow if sorted(key) == sorted(tup[:2])]:
-            place_lines(key,'oln','k')
+        if key[0] in mybusdat and key[1] in mybusdat:
+            if not [tup for tup in brnflow if sorted(key) == sorted(tup[:2])]:
+                place_lines(key,'oln','k')
 
-def brn_trace(brnflow):
+def brn_trace(businfo,brnflow):
     for brn in brnflow:
         if check_bus('brn',brn):
             key = (brn[0],brn[1])
@@ -84,7 +89,7 @@ def brn_trace(brnflow):
 
 #transformer markings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def trn_trace(trnflow):
+def trn_trace(businfo,trnflow):
     for trn in trnflow:
         if check_bus('trn',trn):
             key = (trn[0],trn[1])
@@ -101,36 +106,42 @@ def trn_trace(trnflow):
                 args = (rkey,1.5,6,colr2,trn[2] )
             place_arrows_pfdata(*args)
 
-#plot details ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-if __name__ == '__main__':
-    businfo, mybusdat, rbusinfo, rgenbus, myloadinfo, brnflow, trfflow = run_psse()
-    fig, ax = plt.subplots()
-    outl_trace(branchMark,brnflow)
-    brn_trace(brnflow)  
-    trn_trace(trfflow)
-    bus_trace(mybusdat)
-    gen_trace(rgenbus)
-    load_trace(myloadinfo)
-
+def pdf_network(case_title,*args):
+    outl_trace(branchMark,args[5],args[1])
+    brn_trace(args[0],args[5])
+    trn_trace(args[0],args[6])
+    bus_trace(args[0],args[1],args[9])
+    gen_trace(args[3])
+    load_trace(args[4])
     ax.set_xlim(0,410)
     ax.set_ylim(0,287)
     ax.axes.get_xaxis().set_visible(True)
     ax.axes.get_yaxis().set_visible(True)
-    #ax.set_title('load flow plot')
     plt.text(300, 270, 'Damodar Valley Corporation', fontsize=12)
     plt.text(300, 265, 'Gen in MW,', fontsize=10)
     plt.text(327, 265, 'Branchflow in MVA,', fontsize=10)
-    plt.text(368, 265, 'Load in MVA', fontsize=10)
+    plt.text(370, 265, 'Load in MVA', fontsize=10)
     plt.text(300, 260, '-400KV', color='red', fontsize=10)
     plt.text(320, 260, '-220KV', color='blue', fontsize=10)
     plt.text(340, 260, '-132KV', color='green', fontsize=10)
     plt.text(360, 260, '- -OUT', color='black', fontsize=10)
-    plt.show()
-
+    plt.text(300, 255, '{0}'.format(case_title), color='black', fontsize=10)
+    tots = (args[7][1].real, args[8][1].real)
+    plt.text(300, 250,
+             'Totalgen(MW) = {0:.1f}, Totalload(MW) = {1:.1f}'.format(*tots),
+             color='black', fontsize=10)
     fig.set_size_inches(16.5,11.7)
     extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-    fig.savefig("loadflow.pdf", bbox_inches=extent)
+    fig.savefig("{0}.pdf".format(case_title), bbox_inches=extent)
+
+    
+#plot details ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##if __name__ == '__main__':
+##
+##    fig.set_size_inches(16.5,11.7)
+##    extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+##    fig.savefig("loadflow.pdf", bbox_inches=extent)
 
 #--------------------------------------------
 #Generate Pilot_Zone reports 
