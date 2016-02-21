@@ -19,7 +19,7 @@ def modify_networkelements(f):
     return wraps(f)(wrapper)
 
 
-#@modify_networkelements
+@modify_networkelements
 def case_existing_scenario():
     return "Existing scenario with one gen at KTPS, DSTPS"
 
@@ -479,7 +479,7 @@ def case_btps_decom_2():
     
 
 if __name__ == '__main__':
-    #case_existing_scenario()
+    case_existing_scenario()
     #case_dtps_decom_1()
     #case_dtps_decom_2()
     #case_dtps_decom_3()
@@ -488,7 +488,7 @@ if __name__ == '__main__':
     #case_ctps_decom_3()
     #case_ctps_decom_4()
     #case_ctps_decom_5()
-    case_alt_ctps_decom_1()
+    #case_alt_ctps_decom_1()
     #case_alt_ctps_decom_2()
     #case_alt_ctps_decom_3()
     #case_alt_ctps_decom_4()
