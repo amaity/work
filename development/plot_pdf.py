@@ -1,8 +1,4 @@
-from psse_utils import run_psse
-from dvc_mapping import busMark, branchMark
-from plot_utils import get_buscoords, get_busdetails, get_buoffsets, \
-                    rect, polar, get_buoffsets, calc_segs, get_intermediate_points,\
-                    get_poffsets, check_bus, get_ldoffsets
+from settings import *
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 
@@ -108,6 +104,7 @@ def trn_trace(businfo,trnflow):
 
 def pdf_network(case_title,*args):
     outl_trace(branchMark,args[5],args[1])
+    print "completed outl_trace"
     brn_trace(args[0],args[5])
     trn_trace(args[0],args[6])
     bus_trace(args[0],args[1],args[9])

@@ -1,14 +1,4 @@
-import os,sys
-
-#PSSE_LOCATION = r"C:\Program Files\PTI\PSSE33\PSSBIN"
-PSSE_LOCATION = r"C:\Program Files (x86)\PTI\PSSE33\PSSBIN"
-sys.path.append(PSSE_LOCATION)
-os.environ['PATH'] = os.environ['PATH'] + ';' +  PSSE_LOCATION 
-
-import psspy
-
-import redirect
-redirect.psse2py()
+from settings import *
 #---------------------------------------------------------------------
 
 from itertools import groupby
@@ -34,21 +24,7 @@ def subsystem_info(name, attributes, sid=-1, flag=1, ties=1):
         result.extend(res)
     return zip(*result)
 
-#---------------------------------------------------------------------
-# import numpy as np
-# import math
-
-# PSS/E Saved case
-#CASE = r"C:\Program Files\PTI\PSSE32\EXAMPLE\12TH_PLAN_MAR_2017R1.sav"
-#SAVFILE_LOCATION = r"C:\Program Files\PTI\PSSE33\EXAMPLE\\"
-SAVFILE_LOCATION = r"C:\Program Files (x86)\PTI\PSSE33\EXAMPLE\\"
-CASE = r"Basic Network_Q3_2015-16_Rev0_ER Updates.sav" #r"12TH_PLAN_MAR_2017R1.sav"
-psspy.psseinit(9000)
-psspy.case(SAVFILE_LOCATION + CASE)
-
-from Q3_2015_16_file_map import *
-from dvc_sys_data import *
-
+#--------------------------------------------------------------------
 ##for i in range(len(out_buses)):
 ##     psspy.load_data_3(i, intgar1=0)
 ##
@@ -95,7 +71,7 @@ def run_psse():
 
     businfo = subsystem_info('bus', ['NUMBER', 'BASE', 'NAME'], sid=-1) #get list of all busses in the study file
     mybusinfo = subsystem_info('bus', ['NUMBER', 'BASE', 'NAME'], sid=1)
-    mygeninfo = subsystem_info('mach', ['NUMBER', 'PGEN', 'NAME'], sid=1)
+    mygeninfo = subsystem_info('mach', ['NUMBER', 'PGEN', 'NAME', 'ID'], sid=1)
     myloadinfo = subsystem_info('load', ['NUMBER', 'MVAACT', 'NAME'], sid=1)
     branchinfo = subsystem_info('brn', ['FROMNUMBER', 'TONUMBER', 'MVA', 'P'], sid=1)
     trfinfo = subsystem_info('trn', ['FROMNUMBER', 'TONUMBER', 'MVA', 'P'], sid=1)
@@ -111,8 +87,12 @@ def run_psse():
     #print mybusinfo
     rbus=[]; rgenbus=[]
     for gen in mygeninfo:
-        temp = [tup[1:] for tup in trfinfo if tup[0] == gen[0]]
-        rbus.append(temp[0])
+        ierr, cmpval = psspy.macdt2(ibus=gen[0], id=gen[3], string="XTRAN") 
+        if np.iscomplex(cmpval): #check if GT is implicit
+            rbus.append(gen)  
+        else:
+            temp = [tup[1:] for tup in trfinfo if tup[0] == gen[0]] #if GT is explicit get remote bus num
+            rbus.append(temp[0])
     #print rbus
     rbus.sort()
     for key, group in groupby(rbus, lambda x:x[0]):
@@ -139,9 +119,10 @@ def run_psse():
             fdir += trf[3]
             ckt  += 1
         trfflow.append((trf[0], trf[1], int(flow), ckt, int(fdir)))
+    #print trfflow
 
-    totgen = psspy.zndat(44, "GEN")
-    totload = psspy.zndat(44, "LOAD")
+    totgen = psspy.zndat(DVC_ZONE, "GEN")
+    totload = psspy.zndat(DVC_ZONE, "LOAD")
     
     args = (businfo, mybusdat, rbusinfo, rgenbus, myloadinfo, brnflow,
             trfflow, totgen, totload, tiebusdat)
