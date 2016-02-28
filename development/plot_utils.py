@@ -1,4 +1,4 @@
-from dvc_mapping import busMark, branchMark
+from settings import *
 import math
 import numpy as np
 

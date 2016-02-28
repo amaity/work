@@ -54,13 +54,13 @@ def run_psse():
     status, scalval = [0,1,4,0], []
     ierr, totals, moto = psspy.scal(sid=1, all=0, apiopt=1, status=status,
                                     scalval=scalval)
-    scalval = [0.,0.,totals[2],totals[3],totals[4],totals[5],0.95]
+    scalval = [0.,0.,totals[2],totals[3],totals[4],totals[5],0.98]
     ierr, totals, moto = psspy.scal(sid=1, all=0, apiopt=2, status=status,
                                     scalval=scalval)
 
     psspy.solution_parameters_3(intgar2=150, realar6=1.0) #, realar17=10.1, realar18=10.00001)
     #psspy.solv((1,0,0,0,0,0))
-    psspy.fdns(options6=0) # 1 = flat start
+    #psspy.fdns(options6=0) # 1 = flat start
     psspy.fnsl((1,0,0,0,0,0,99,1))
     #psspy.solv((1,0,0,0,0,0))
     #psspy.fnsl((1,0,0,0,0,0,99,1))

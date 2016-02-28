@@ -104,7 +104,6 @@ def trn_trace(businfo,trnflow):
 
 def pdf_network(case_title,*args):
     outl_trace(branchMark,args[5],args[1])
-    print "completed outl_trace"
     brn_trace(args[0],args[5])
     trn_trace(args[0],args[6])
     bus_trace(args[0],args[1],args[9])

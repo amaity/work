@@ -1,8 +1,11 @@
-import psspy
+from settings import *
 
 SAVFILE_LOCATION = r"C:\Program Files (x86)\PTI\PSSE33\EXAMPLE\\"
 CASE = r"Basic Network_Q3_2015-16_Rev0_ER Updates.sav" 
+psspy.case(SAVFILE_LOCATION + CASE)
+
 AREA, DVC_ZONE, OWNER = 2003, 2031, 2301
+
 
 busMap = {
     'MPL4'          : 224001,
@@ -16,6 +19,7 @@ busMap = {
     'MAITHONPG4'    : 244003,
     'PARULIAPG4'    : 264009,
     'JAMSHEDPURPG4' : 244004,
+    'CHAIBASA4'     : 244005,
     'BARIPADAPG4'   : 254012,
     'BIHARSHRIFPG4' : 214000,
     'GAYAPG4'       : 214005,
@@ -96,8 +100,8 @@ busMap = {
     'DTPS1'         : 231000,
     'BARHI1'        : 241000,
     'MAITHONHYDL1'  : 241006,
+    'MAITHONGT1'    : 241008,
     'PANCHETHYDL1'  : 231007,
-    'KODERMAN1'     : 241032,
     'HAZARIBAGH1'   : 241019,
     'GOLA1'         : 241003,
     'CHANDIL1'      : 241004,
@@ -109,17 +113,19 @@ busMap = {
     'KUMARDUBI1'    : 241010,
     'PATHERDIH1'    : 241007,
     'NIMIAGHAT1'    : 241021,
-    'GIRIDIH1'      : 241023,
+    'GIRIDIHO1'     : 241023,
+    'GIRIDIHN1'     : 241029,
     'SINDRI1'       : 241022,
     'RAMKANALI1'    : 241012,
     'PATRATU1'      : 241014,
     'NKPURA1'       : 241020,
     'DHANBAD1'      : 241030,
     'PURULIA1'      : 231001,
-    'JAMURIA1'      : 231010,
+    'JAMURIA1'      : 231011,
     'KONAR1'        : 241017,
     'BARJORA1'      : 231010,
-    'KODERMAO1'     : 241018,
+    'KODERMAO1'     : 241032,
+    'KODERMAN1'     : 241018,
     'BIADA1'        : 241033,  
     # 'MUGMA1'        : 44139,
     # 'CHAS1'         : 44140,
@@ -154,8 +160,8 @@ psspy.bus_data_2(busMap['BIADA1'], intgar1=1, intgar2=AREA, intgar3=DVC_ZONE, in
 # psspy.bus_data_2(busMap['MEJIAB2'], intgar1=4) #MEJIAB2
 # psspy.bus_data_2(busMap['KALIPAHARI2'], intgar1=4) #KALI2
 # psspy.bus_data_2(busMap['JAMURIA2'], intgar1=4) #JAMURIA2
-psspy.bus_data_2(busMap['MUCHIPARA3'], intgar1=1, intgar2=AREA, intgar3=DVC_ZONE, intgar4=OWNER, realar1=33., 
-     name='MUCHI3') 
+#psspy.bus_data_2(busMap['MUCHIPARA3'], intgar1=1, intgar2=AREA, intgar3=DVC_ZONE, intgar4=OWNER, realar1=33., 
+#     name='MUCHI3') 
 # psspy.bus_data_2(busMap['MOSABANI4'], intgar1=4) #MOSB4
 
 
@@ -185,7 +191,7 @@ psspy.load_data_3(busMap['KALYANESWARI1'], realar1=143.25) #KALYANESWARI
 psspy.load_data_3(busMap['KUMARDUBI1'], realar1=105.23) #KUMARDUBI
 psspy.load_data_3(busMap['PATHERDIH1'], realar1=208.65-40.0) #PATHERDIH (minus GOVINDPUR)
 psspy.load_data_3(busMap['NIMIAGHAT1'], realar1=61.5) #NIMIAGHAT
-psspy.load_data_3(busMap['GIRIDIH1'], realar1=146.) #GIRIDIH
+psspy.load_data_3(busMap['GIRIDIHO1'], realar1=146.) #GIRIDIH
 psspy.load_data_3(busMap['SINDRI1'], realar1=27.5) #SINDRI
 psspy.load_data_3(busMap['RAMKANALI1'], realar1=34.) #RAMKANALI
 psspy.load_data_3(busMap['PATRATU1'], realar1=55.2) #PATRATU
@@ -215,7 +221,7 @@ psspy.load_data_3(busMap['KODERMA2'], realar1=0.) #KODERMA2
 #psspy.load_data_3(busMap['PATRATU2'], realar1=0.) #PATRATU
 #psspy.load_data_3(busMap['MEJIAB2'], realar1=0.) #MEJIAB
 
-#BRANCH DATA
+#BRANCH DATA -----------------------------------------------
 a3p = (0.079018, 0.246065, 0.050086)
 psspy.branch_data(busMap['DTPS1'], busMap['RAMKANALI1'], "1", intgar1=0)
 d = 25  # distance in km
@@ -249,7 +255,26 @@ psspy.branch_data(busMap['CTPS1'], busMap['BIADA1'], "1", intgar1=1, realar1=lc[
 psspy.branch_data(busMap['CTPS1'], busMap['BIADA1'], "2", intgar1=1, realar1=lc[0],
                          realar2=lc[1], realar3=lc[2])
 
+psspy.branch_data(busMap['BTPSB1'], busMap['CTPS1'], "1", intgar1=0)
+psspy.branch_data(busMap['BTPSB1'], busMap['CTPS1'], "2", intgar1=0)
 
+# psspy.movebrn(frmbus=busMap['GIRIDIH2'], tobus=busMap['GIRIDIHN1'], ckt='2', newtobus=busMap['GIRIDIHO1'], 
+#     newckt='1')
+d = 1 # distance in km
+lc = [0.01*d*i for i in a3p]
+psspy.branch_data(busMap['GIRIDIHO1'], busMap['GIRIDIHN1'], "1", intgar1=1, realar1=lc[0], realar2=lc[1], 
+    realar3=lc[2]) 
+psspy.branch_data(busMap['GIRIDIHO1'], busMap['GIRIDIHN1'], "2", intgar1=1, realar1=lc[0], realar2=lc[1], 
+    realar3=lc[2]) 
+
+d, cea3z = 58, (0.014313, 0.086133, 0.140196) 
+lc = [0.01*d*i for i in cea3z]
+psspy.branch_data(busMap['GOLA2'], busMap['RANCHIPG2'], "1", intgar1=1, realar1=lc[0], realar2=lc[1], 
+    realar3=lc[2]) 
+psspy.branch_data(busMap['GOLA2'], busMap['RANCHIPG2'], "2", intgar1=1, realar1=lc[0], realar2=lc[1], 
+    realar3=lc[2])
+
+# Co-ordinate mapping --------------
 kx, ky = 70, 260
 m, n = 15, 15
 #{bus_key: ((bus_coords),(buslabel_offsets),(gendata_offsets),(loadlabel_offsets)) }
@@ -264,11 +289,11 @@ busMark = {
     #busMap['MOSABANI4'] : {'buloc':(189,70)}, #Mosabani
     busMap['RANCHIPG4'] : {'buloc':(kx-m,ky-n*9)}, #RanchiPG
     busMap['MAITHONPG4'] : {'buloc':(kx+m*9,ky-n),'buoffset':(-3,12,90)}, #MaithonPG
-    busMap['PARULIAPG4'] : {'buloc':(333,164)}, #DurgapurPG
+    busMap['PARULIAPG4'] : {'buloc':(kx+m*18,ky-n*3)}, #DurgapurPG
     busMap['JAMSHEDPURPG4'] : {'buloc':(kx+m*4,ky-n*12)}, #JamshdepurPG
     busMap['BARIPADAPG4'] : {'buloc':(kx+m*4,ky-n*15)}, #BaripadaPG
     busMap['BIHARSHRIFPG4'] : {'buloc':(50,275)}, #BiharsharifPG
-    busMap['GAYAPG4'] : {'buloc':(38,268)}, #GayaPG
+    busMap['GAYAPG4'] : {'buloc':(kx,ky+n)}, #GayaPG
      
     busMap['BIDHANNG2'] : {'buloc':(kx+m*18,ky-n*6)}, 
     busMap['JODAIS2'] : {'buloc':(kx-m,ky-n*13)}, 
@@ -300,7 +325,7 @@ busMark = {
     #busMap['MEJIAB2'] : {'buloc':(kx+m*12,ky-n*10)}, 
     #busMap['KALIPAHARI2'] : {'buloc':(kx+m*11,ky-n*5./3.)}, 
     #busMap['JAMURIA2'] : {'buloc':(kx+m*15,ky-n*5)}, 
-    #busMap['PARULIAPG2'] : {'buloc':(kx+m*18,ky-n*5)}, 
+    busMap['PARULIAPG2'] : {'buloc':(kx+m*18,ky-n*5)}, 
     busMap['MAITHONPG2'] : {'buloc':(kx+m*7,ky-n)}, 
     busMap['RANCHIPG2'] : {'buloc':(kx-m, ky-n*8)}, 
      
@@ -316,6 +341,7 @@ busMark = {
     busMap['DTPS1'] : {'buloc':(kx+m*15,ky-n*7)}, 
     busMap['BARHI1'] : {'buloc':(kx,ky-n*3)}, 
     busMap['MAITHONHYDL1'] : {'buloc':(kx+m*7,ky-n*4),'buoffset':(-5,6,90)}, 
+    busMap['MAITHONGT1'] : {'buloc':(kx+m*7,ky-n*5),'buoffset':(-5,6,90)}, 
     busMap['PANCHETHYDL1'] : {'buloc':(kx+m*8,ky-n*5)}, 
     busMap['KODERMAN1'] : {'buloc':(kx,ky-n*2),'buoffset':(-18,0,0)}, 
     busMap['HAZARIBAGH1'] : {'buloc':(kx-m,ky-n*3),'buoffset':(-9,0,0)}, 
@@ -329,7 +355,8 @@ busMark = {
     busMap['KUMARDUBI1'] : {'buloc':(kx+m*8,ky-n*4)}, 
     busMap['PATHERDIH1'] : {'buloc':(kx+m*7,ky-n*6)}, 
     busMap['NIMIAGHAT1'] : {'buloc':(kx+m*6,ky-n*2)}, 
-    busMap['GIRIDIH1'] : {'buloc':(kx+m*4,ky-n*2)},
+    busMap['GIRIDIHN1'] : {'buloc':(kx+m*4,ky-n*2)},
+    busMap['GIRIDIHO1'] : {'buloc':(kx+m*5,ky-n*2)},
     busMap['SINDRI1'] : {'buloc':(kx+m*7,ky-n*7)}, 
     busMap['RAMKANALI1'] : {'buloc':(kx+m*8,ky-n*8)}, 
     busMap['PATRATU1'] : {'buloc':(kx,ky-n*6),'buoffset':(-2,-6,90)}, 
@@ -363,7 +390,7 @@ branchMark = {
     (busMap['JAMSHEDPUR2'], busMap['JODAIS2']) : {'poffset':(0,0)}, 
     (busMap['KODERMA2'], busMap['KODERMAN1']) : {'poffset':(1,0)}, 
     (busMap['GIRIDIH2'], busMap['KODERMA2']) : {'poffset':(2,-2)}, 
-    #(44207, 44219) : {'interpts':((kx+m*5,ky-n*8),)}, #MTPS - GOLA
+    (busMap['MTPS2'], busMap['GOLA2']) : {'interpts':((kx+m*5,ky-n*8),)}, 
     #(44207, 44230) : {'interpts':((kx+m*5,ky-n*8),(kx+m*3.5,ky-n*8))}, #MTPS - BSL GIS
     (busMap['MTPS2'], busMap['BURNPUR2']) : {'interpts':((kx+m*13,ky-n*5./4.),(kx+m*9.5,ky-n*5./4.))}, 
     #(busMap['PARULIA2'], busMap['DSTPS2']) : {'poffset':(-1,-4)}, 
